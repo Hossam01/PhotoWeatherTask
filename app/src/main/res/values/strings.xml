@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PhotoWeatherTask</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="options">Options</string>
+    <string name="photos">Photos</string>
+    <string name="new_photo">New Photo</string>
+    <string name="photoPreview">Photo Preview</string>
+    <string name="generateWeatherData">Generate Weather Data</string>
+    <string name="share">Share</string>
+</resources>

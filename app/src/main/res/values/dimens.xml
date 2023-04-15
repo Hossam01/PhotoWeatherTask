@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_medium">6dp</dimen>
+    <dimen name="padding_xxmedium">11dp</dimen>
+    <dimen name="padding_large">12dp</dimen>
+    <dimen name="padding_xlarge">20dp</dimen>
+    <dimen name="padding_semi_xxlarge">25dp</dimen>
+    <dimen name="padding_xxlarge">28dp</dimen>
+    <dimen name="padding_xxxlarge">35dp</dimen>
+    <dimen name="padding_xxxxlarge">40dp</dimen>
+    <dimen name="padding_xxxxxxxlarge">80dp</dimen>
+
+    <dimen name="margin_xsmall">2dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_xmedium">10dp</dimen>
+    <dimen name="margin_xxmedium">12dp</dimen>
+    <dimen name="margin_semi_large">14dp</dimen>
+    <dimen name="margin_default">15dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_semi_xlarge">19dp</dimen>
+    <dimen name="margin_xlarge">24dp</dimen>
+    <dimen name="margin_semi_xxlarge">30dp</dimen>
+    <dimen name="margin_xxlarge">32dp</dimen>
+    <dimen name="margin_xxxlarge">48dp</dimen>
+    <dimen name="margin_xxxxlarge">56dp</dimen>
+    <dimen name="margin_xxxxxlarge">64dp</dimen>
+    <dimen name="margin_semi_xxxxxxlarge">72dp</dimen>
+    <dimen name="margin_xxxxxxlarge">72dp</dimen>
+    <dimen name="margin_xxxxxxxlarge">88dp</dimen>
+
+
+    <dimen name="radius_label">12dp</dimen>
+    <dimen name="radius_medium">7dp</dimen>
+    <dimen name="radius_xSmall">5dp</dimen>
+    <dimen name="radius_small">2dp</dimen>
+    <dimen name="radius_large">10dp</dimen>
+    <dimen name="radius_xlarge">18dp</dimen>
+    <dimen name="radius_bottom_sheet">15dp</dimen>
+</resources>
