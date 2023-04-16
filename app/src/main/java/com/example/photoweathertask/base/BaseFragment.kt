@@ -138,7 +138,6 @@ abstract class BaseFragment <T : ViewBinding> : Fragment() {
             }
         }
 
-
         val calendar = Calendar.getInstance()
 
         selectedImgFile = File(
@@ -240,6 +239,7 @@ abstract class BaseFragment <T : ViewBinding> : Fragment() {
         }
         builder.show()
     }
+
     private fun useGallery() {
         getGalleryImage.launch("image/*")
     }
@@ -250,13 +250,14 @@ abstract class BaseFragment <T : ViewBinding> : Fragment() {
             requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES),
             calendar.timeInMillis.toString() + "_selectedImg.jpg"
         )
+
         uri = FileProvider.getUriForFile(
             requireActivity(),
             requireActivity().packageName.toString() + ".provider",
             selectedImgFile
         )
-        cameraCaptureImage.launch(uri)
 
+        cameraCaptureImage.launch(uri)
     }
 
     var imageSelectListener: ImagePickupListener? = null

@@ -1,6 +1,7 @@
 package com.example.photoweathertask.base
 
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.models.WeatherPhoto
 
 abstract class BaseAdapter<item> : RecyclerView.Adapter<BaseViewHolder<item>>() {
     protected var data: MutableList<item> = arrayListOf()

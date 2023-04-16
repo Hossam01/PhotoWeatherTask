@@ -1,10 +1,13 @@
 package com.example.data.db
 
+
+
+
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy.Companion.REPLACE
+import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
-import com.example.domain.models.WeatherModel
 import com.example.domain.models.WeatherPhoto
 
 
@@ -17,5 +20,5 @@ interface WeatherPhotoDao {
     fun insert(weatherPhoto: WeatherPhoto)
 
     @Query("SELECT * FROM weatherPhoto")
-    suspend fun getWeatherPhotoList(): List<WeatherPhoto?>?
+    fun getWeatherPhotoList(): List<WeatherPhoto>
 }

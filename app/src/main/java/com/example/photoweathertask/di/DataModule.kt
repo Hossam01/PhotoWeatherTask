@@ -1,7 +1,7 @@
 package com.example.photoweathertask.di
 
 import android.content.Context
-import androidx.annotation.Nullable
+import androidx.room.Room
 import com.example.data.db.WeatherDataBase
 import com.example.data.db.WeatherPhotoDao
 import com.example.data.remote.ApiService
@@ -9,6 +9,7 @@ import com.example.data.repositries.LocalRepositoryImp
 import com.example.data.repositries.RemoteRepositoryImp
 import com.example.domain.dataInterface.LocalRepository
 import com.example.domain.dataInterface.RemoteRepository
+import com.example.domain.models.WeatherPhoto
 import com.example.photoweathertask.BuildConfig
 import com.example.photoweathertask.base.BaseHeaderInterceptor
 import com.example.photoweathertask.base.ConnectionInterceptor
@@ -111,14 +112,16 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun providesDatabase(@ApplicationContext appContext: Context): WeatherDataBase? {
-        return WeatherDataBase.getDatabaseInstance(appContext)
-    }
+    fun providesDatabase(@ApplicationContext appContext: Context) =
+         Room.databaseBuilder(
+            appContext,
+            WeatherDataBase::class.java, "weather_db"
+        ).fallbackToDestructiveMigration().allowMainThreadQueries().build()
+
 
     @Provides
     @Singleton
-    fun getDao(dataBase: WeatherDataBase): WeatherPhotoDao =
-        dataBase.getWeatherPhotoDao()
+    fun getDao(dataBase: WeatherDataBase)=dataBase.getWeatherPhotoDao()
 
     @Provides
     @Singleton
@@ -126,5 +129,10 @@ class DataModule {
         dao: WeatherPhotoDao,
     ): LocalRepositoryImp =
         LocalRepositoryImp(dao)
+
+    @Provides
+    fun provideEntity() = WeatherPhoto()
+
+
 
 }

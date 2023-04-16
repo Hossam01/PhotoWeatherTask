@@ -2,6 +2,7 @@ package com.example.photoweathertask.di
 
 import com.example.domain.dataInterface.LocalRepository
 import com.example.domain.dataInterface.RemoteRepository
+import com.example.domain.usecase.weather.LoadWeatherUseCase
 import com.example.domain.usecase.weather.SaveWeatherUseCase
 import com.example.domain.usecase.weather.WeatherUseCase
 import dagger.Module
@@ -21,6 +22,11 @@ class DomainModule {
     @Provides
     @Singleton
     fun saveWeatherUseCase(repository: LocalRepository): SaveWeatherUseCase = SaveWeatherUseCase(repository)
+
+    @Provides
+    @Singleton
+    fun loadWeatherUseCase(repository: LocalRepository): LoadWeatherUseCase =
+        LoadWeatherUseCase(repository)
 
 
 

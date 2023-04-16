@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.net.Uri
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +14,20 @@ import com.example.photoweathertask.NewPhoto.view_state.NewPhotoIntents
 import com.example.photoweathertask.R
 import com.example.photoweathertask.base.BaseFragment
 import com.example.photoweathertask.base.helper.LoadImage
+import com.example.photoweathertask.base.pick_images.convertBitmapToFile
 import com.example.photoweathertask.databinding.NewPhotoFragmentBinding
 import com.example.photoweathertask.util.getImageUri
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
+import java.util.*
 
 @AndroidEntryPoint
 class NewPhotoFragment :BaseFragment<NewPhotoFragmentBinding>() {
 
     private val viewModel by viewModels<NewPhotoViewModel>()
+
+    var path:String=""
+    val calendar = Calendar.getInstance()
 
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> NewPhotoFragmentBinding
         get() = NewPhotoFragmentBinding::inflate
@@ -40,9 +47,18 @@ class NewPhotoFragment :BaseFragment<NewPhotoFragmentBinding>() {
         ui.btnSharePhoto.setOnClickListener {
             val image =  takeScreenshot(ui.imageContainer,2000,1050)
             shareImage(context?.getImageUri(image))
-            viewModel.onEvent(NewPhotoIntents.SavePhotoIntent("",context?.getImageUri(image)?.path.toString()))
+
+            var file=File(
+                requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES),
+                calendar.timeInMillis.toString() + "_selectedImg.jpg"
+            )
+
+            viewModel.onEvent(NewPhotoIntents.SavePhotoIntent(calendar.timeInMillis.toString(),
+                path
+            ))
         }
     }
+
     fun subscribeObserver()
     {
         with(viewModel.pathData)
@@ -50,6 +66,7 @@ class NewPhotoFragment :BaseFragment<NewPhotoFragmentBinding>() {
             observe(viewLifecycleOwner)
             {
                 LoadImage.loadImage(requireContext(),it,R.drawable.weather,ui.weatherPhoto)
+                path=it
             }
         }
 
